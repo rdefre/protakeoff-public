@@ -1,0 +1,165 @@
+   Compiling protakeoff-tauri v0.1.0 (C:\Users\Admin\Documents\protakeoff-v2\frontend\src-tauri)
+warning: unused import: `CStr`
+ --> frontend\src-tauri\src\mupdf_wrapper.rs:1:25
+  |
+1 | use std::ffi::{CString, CStr};
+  |                         ^^^^
+  |
+  = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused variable: `shape`
+   --> frontend\src-tauri\src\commands.rs:105:29
+    |
+105 |                         let shape = m.properties.get("shape").and_then(|v| v.as_str()).unwrap_or("circle");
+    |                             ^^^^^ help: if this is intentional, prefix it with an underscore: `_shape`
+    |
+    = note: `#[warn(unused_variables)]` (part of `#[warn(unused)]`) on by default
+
+warning: struct `BridgeOverlay` is never constructed
+  --> frontend\src-tauri\src\mupdf_wrapper.rs:10:12
+   |
+10 | pub struct BridgeOverlay(c_void);
+   |            ^^^^^^^^^^^^^
+   |
+   = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: associated items `create_new`, `open_sibling`, `save`, `copy_page_from`, and `begin_overlay` are never used
+   --> frontend\src-tauri\src\mupdf_wrapper.rs:92:12
+    |
+ 64 | impl MuPdfDoc {
+    | ------------- associated items in this implementation
+...
+ 92 |     pub fn create_new() -> Result<Self, Box<dyn Error>> {
+    |            ^^^^^^^^^^
+...
+109 |     pub fn open_sibling(&self, path: &str) -> Result<Self, Box<dyn Error>> {
+    |            ^^^^^^^^^^^^
+...
+158 |     pub fn save(&self, path: &str) -> Result<(), Box<dyn Error>> {
+    |            ^^^^
+...
+169 |     pub fn copy_page_from(&self, src: &MuPdfDoc, src_page_idx: i32) -> Result<(), Box<dyn Error>> {
+    |            ^^^^^^^^^^^^^^
+...
+180 |     pub fn begin_overlay(&self, page_idx: i32) -> Result<MuPdfOverlay, Box<dyn Error>> {
+    |            ^^^^^^^^^^^^^
+
+warning: struct `MuPdfOverlay` is never constructed
+   --> frontend\src-tauri\src\mupdf_wrapper.rs:192:12
+    |
+192 | pub struct MuPdfOverlay {
+    |            ^^^^^^^^^^^^
+
+warning: methods `draw_line`, `draw_rect`, `draw_text`, and `finish` are never used
+   --> frontend\src-tauri\src\mupdf_wrapper.rs:198:12
+    |
+197 | impl MuPdfOverlay {
+    | ----------------- methods in this implementation
+198 |     pub fn draw_line(&self, x1: f32, y1: f32, x2: f32, y2: f32, thickness: f32, r: f32, g: f32, b: f32, a: f32) {
+    |            ^^^^^^^^^
+...
+204 |     pub fn draw_rect(&self, x: f32, y: f32, w: f32, h: f32, thickness: f32, r: f32, g: f32, b: f32, a: f32, fill: bool) {
+    |            ^^^^^^^^^
+...
+210 |     pub fn draw_text(&self, x: f32, y: f32, text: &str, font_size: f32, r: f32, g: f32, b: f32) {
+    |            ^^^^^^^^^
+...
+217 |     pub fn finish(self) -> Result<(), Box<dyn Error>> {
+    |            ^^^^^^
+
+warning: function `mupdf_create_pdf` is never used
+  --> frontend\src-tauri\src\mupdf_wrapper.rs:29:8
+   |
+29 |     fn mupdf_create_pdf(ctx: *mut BridgeContext, error_code: *mut c_int) -> *mut BridgeDocument;
+   |        ^^^^^^^^^^^^^^^^
+
+warning: function `mupdf_copy_page` is never used
+  --> frontend\src-tauri\src\mupdf_wrapper.rs:30:8
+   |
+30 |     fn mupdf_copy_page(ctx: *mut BridgeContext, dest_doc: *mut BridgeDocument, src_doc: *mut BridgeDocument, src_page_idx: c_int, error_c...
+   |        ^^^^^^^^^^^^^^^
+
+warning: function `mupdf_save_document` is never used
+  --> frontend\src-tauri\src\mupdf_wrapper.rs:31:8
+   |
+31 |     fn mupdf_save_document(ctx: *mut BridgeContext, doc: *mut BridgeDocument, path: *const c_char) -> c_int;
+   |        ^^^^^^^^^^^^^^^^^^^
+
+warning: function `mupdf_begin_overlay` is never used
+  --> frontend\src-tauri\src\mupdf_wrapper.rs:33:8
+   |
+33 |     fn mupdf_begin_overlay(ctx: *mut BridgeContext, doc: *mut BridgeDocument, page_idx: c_int, error_code: *mut c_int) -> *mut BridgeOver...
+   |        ^^^^^^^^^^^^^^^^^^^
+
+warning: function `mupdf_end_overlay` is never used
+  --> frontend\src-tauri\src\mupdf_wrapper.rs:34:8
+   |
+34 |     fn mupdf_end_overlay(ctx: *mut BridgeContext, overlay: *mut BridgeOverlay) -> c_int;
+   |        ^^^^^^^^^^^^^^^^^
+
+warning: function `mupdf_overlay_draw_line` is never used
+  --> frontend\src-tauri\src\mupdf_wrapper.rs:35:8
+   |
+35 |     fn mupdf_overlay_draw_line(ctx: *mut BridgeContext, overlay: *mut BridgeOverlay, x1: c_float, y1: c_float, x2: c_float, y2: c_float, ...
+   |        ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `mupdf_overlay_draw_rect` is never used
+  --> frontend\src-tauri\src\mupdf_wrapper.rs:36:8
+   |
+36 |     fn mupdf_overlay_draw_rect(ctx: *mut BridgeContext, overlay: *mut BridgeOverlay, x: c_float, y: c_float, w: c_float, h: c_float, thic...
+   |        ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `mupdf_overlay_draw_text` is never used
+  --> frontend\src-tauri\src\mupdf_wrapper.rs:37:8
+   |
+37 |     fn mupdf_overlay_draw_text(ctx: *mut BridgeContext, overlay: *mut BridgeOverlay, x: c_float, y: c_float, text: *const c_char, font_si...
+   |        ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: struct `Point` is never constructed
+ --> frontend\src-tauri\src\commands.rs:9:12
+  |
+9 | pub struct Point {
+  |            ^^^^^
+
+warning: struct `LegendItem` is never constructed
+  --> frontend\src-tauri\src\commands.rs:15:12
+   |
+15 | pub struct LegendItem {
+   |            ^^^^^^^^^^
+
+warning: struct `LegendData` is never constructed
+  --> frontend\src-tauri\src\commands.rs:22:12
+   |
+22 | pub struct LegendData {
+   |            ^^^^^^^^^^
+
+warning: struct `MarkupData` is never constructed
+  --> frontend\src-tauri\src\commands.rs:29:12
+   |
+29 | pub struct MarkupData {
+   |            ^^^^^^^^^^
+
+warning: function `parse_color` is never used
+  --> frontend\src-tauri\src\commands.rs:37:4
+   |
+37 | fn parse_color(hex: &str) -> (f32, f32, f32) {
+   |    ^^^^^^^^^^^
+
+warning: function `export_pdf` is never used
+  --> frontend\src-tauri\src\commands.rs:47:14
+   |
+47 | pub async fn export_pdf(
+   |              ^^^^^^^^^^
+
+error: linking with `link.exe` failed: exit code: 1120
+  |
+  = note: "C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.50.35717\\bin\\HostX64\\x64\\link.exe" "/NOLOGO" "C:\\Users\\Admin\\AppData\\Local\\Temp\\rustcEdSTSI\\symbols.o" "<257 object files omitted>" "C:\\Users\\Admin\\Documents\\protakeoff-v2\\mupdf\\platform\\win32\\x64\\Release\\libmupdf.lib" "C:\\Users\\Admin\\Documents\\protakeoff-v2\\mupdf\\platform\\win32\\x64\\Release\\libthirdparty.lib" "C:\\Users\\Admin\\Documents\\protakeoff-v2\\mupdf\\platform\\win32\\x64\\Release\\libresources.lib" "C:\\Users\\Admin\\Documents\\protakeoff-v2\\mupdf\\platform\\win32\\x64\\Release\\libharfbuzz.lib" "C:\\Users\\Admin\\Documents\\protakeoff-v2\\mupdf\\platform\\win32\\x64\\Release\\libzxing.lib" "C:\\Users\\Admin\\Documents\\protakeoff-v2\\mupdf\\platform\\win32\\x64\\Release\\libtesseract.lib" "C:\\Users\\Admin\\Documents\\protakeoff-v2\\mupdf\\platform\\win32\\x64\\Release\\libleptonica.lib" "user32.lib" "gdi32.lib" "shell32.lib" "comdlg32.lib" "advapi32.lib" "ws2_32.lib" "C:\\Users\\Admin\\Documents\\protakeoff-v2\\target\\debug\\build\\protakeoff-tauri-7546e8931401a86d\\out\\mupdf_bridge.lib" "C:\\Users\\Admin\\Documents\\protakeoff-v2\\target\\debug\\deps/{libtauri_plugin_dialog-73b6663b9d718c9c,librfd-e51a5a5d9916dd67,libtauri_plugin_fs-8546212e7a8a9900,libtauri_plugin_shell-1055d893e2e90f20,libopen-e5e9929660c88a9a,libshared_child-d0f4e661bbba8f3a,libos_pipe-9ca813843789b5b1,libencoding_rs-9b9da14d04467bd8,libtauri-91f27cb7fd2a3b48,libdirs-7ee57784c6822b87,libdirs_sys-970a65b0e30c1adf,liboption_ext-1870541f238b2de3,libwindow_vibrancy-184265b449fa793c,libwindows_sys-7ac81d67e0cf4b41,libwindows_targets-1b047d285d0c7be3,libmime-231d765248dde1cb,libgetrandom-3b7cd57894b29508,libtauri_runtime_wry-85c270e481b145cc,libsoftbuffer-552df11deb8fbc1e,libwry-ceea91ec44795b19,libtao-f0bee6966575f858,libwindows_version-a08a4a0c017abef9,libparking_lot-4dbe3703915a12a9,libparking_lot_core-20e60c472e319002,libcfg_if-ec1e20794a94cd90,liblock_api-5f3c2748019d06ba,libscopeguard-501eeb4da884ab3a,liblog-e70adaa8d4369be1,liblazy_static-58dc5c2d4098de3b,libmuda-3f7b3d8577aa3b4c,libwindows_sys-574582e8b045d814,libwindows_targets-b2de5e0a02c6d8cc,libkeyboard_types-ed4d700903455644,libbitflags-b5e89a7f8758971a,libunicode_segmentation-ca8eb3efcd8f9884,libonce_cell-5e3a8e85e17af18b,libcrossbeam_channel-5db87ce7b0028e2c,libcrossbeam_utils-165d8934f04ac61d,libtokio-cf658ebaccf994b9,libpin_project_lite-6567fa4416ac9d28,libtauri_runtime-43a6486468f731c2,libwebview2_com-9686b72ad91c7394,libwebview2_com_sys-bfafb4fe60891f02,libcookie-a376b9d1dd265e6e,libtime-46b51d90320fca20,libtime_core-2018772c28b07e6f,libnum_conv-7cf54b4b567b49f4,libderanged-88ab3753f37cd999,libpowerfmt-73b3b4f7c52eaa10,libwindows-03f53e3b2409876d,libwindows_core-6629f1b09836282b,libwindows_strings-29830484684c2737,libwindows_result-53db30d42523c645,libwindows_link-a4fc8a62db122a61,libdpi-d648c24008a4b1f9,libserialize_to_javascript-ecd22e4d634781c9,libraw_window_handle-0c6b6fcb575bfb38,libtauri_utils-a3dc0a5a6154a9f9,libdunce-cd9d23a3cc449435,libinfer-212b8bb3215b0a60,libcfb-647a0bd203cdd3ff,libfnv-48169f8be948e182,libuuid-58b378f15d8188a4,libbrotli-b68d6d0c167d920d,libbrotli_decompressor-257a47a2bae00e10,liballoc_stdlib-96c6caa8b56ca471,liballoc_no_stdlib-59033860ac630783,liburlpattern-b643cb7688c31da9,libunic_ucd_ident-d2637378160567d9,libunic_ucd_version-7b290003e086675a,libunic_common-dfc28800798af614,libunic_char_property-99bead519b66ab2f,libunic_char_range-055a475d24c7813f,libregex-89640ddf8e9cc42c,libregex_automata-feab78d71b916aca,libaho_corasick-f0cbae757ab9dc88,libregex_syntax-799107945952e1cd,libglob-c277a1f9bbca3d1d,libwalkdir-335f5b16d3e55eeb,libsame_file-3a9f6d9ddab852b2,libwinapi_util-973ee284834121b9,libwindows_sys-9ffafe6f13ae9f1d,libwindows_link-96cbc5d04678fdd0,libjson_patch-e38e7f8328fa3fbd,libthiserror-e1a50399940178ca,libjsonptr-1be77d9a070d8889,libserde_with-d4c7d3c3fc9b4c81,libserde_json-ef9f5ba3369c0ef2,libmemchr-458d0f6e3e3c4481,libryu-f361b22c6c74824f,libhttp-4ead5b7782f02158,libitoa-3604425015f411b0,libbytes-3000ac23dd26bbe9,libphf-110dc06542934332,libphf_shared-527846c830b55859,libsiphasher-8cda8c759f84a403,libtoml-12e0919b271c27da,libtoml_writer-d0492edab65d2e71,libtoml_parser-bbd7546993465ea6,libwinnow-cb1f6e6d3714d9ff,libserde_spanned-0d28b4dcc02c1908,libtoml_datetime-c6badfa95c05e67e,libserde_untagged-b70a5ddffaf9cf89,liberased_serde-3740b4e7d877852a,libtypeid-85a2673792e79fc6,liburl-5fda48c6c176ed2c,libidna-6b5513aef7fb87f0,libutf8_iter-2e7d82fba90ec7d2,libidna_adapter-bb8ba61eacdb6891,libicu_properties-58f292de1aa1a4e7,libicu_properties_data-11e7ac2318a21999,libicu_normalizer-a60ce01b65864ca9,libicu_normalizer_data-fe712dde112380c7,libicu_collections-2350a01fd3a7dba2,libpotential_utf-0953a5888dd3df5c,libicu_provider-5bf5b5f6718dc79f,libicu_locale_core-45395f7f678cc008,libtinystr-606fb894396ab645,liblitemap-2c6162ac31785961,libwriteable-cf0b359cdcaa2114,libzerovec-401d19dc12b00cf6,libzerotrie-508ca0eb89480119,libyoke-d41ba1dd45feb49e,libstable_deref_trait-ce9924d13c30de4a,libzerofrom-619599a5abf114c8,libform_urlencoded-5d7c40b1bd351e1b,libpercent_encoding-5fa4567a5b588d03,libthiserror-3b6c8abf20dd84cf,libanyhow-63d951778344159b,libserde-db036584d1b1596d,libserde_core-a4447d8c959f31a0,libsemver-94c2a94c1c4c68eb,librstar-fd4857bdd2d7381f,libheapless-8358c1ba3b1a0d8a,libhash32-97168c19166ab359,libbyteorder-a50a73bcfe4c5072,libsmallvec-269a40141c644d12,libnum_traits-4f602c60ac619012,liblibm-b580a1a5aa0b9aea}.rlib" "<sysroot>\\lib\\rustlib\\x86_64-pc-windows-msvc\\lib/{libstd-*,libpanic_unwind-*,libcfg_if-*,libwindows_targets-*,librustc_demangle-*,libstd_detect-*,libhashbrown-*,librustc_std_workspace_alloc-*,libunwind-*,librustc_std_workspace_core-*,liballoc-*,libcore-*,libcompiler_builtins-*}.rlib" "shell32.lib" "ole32.lib" "C:\\Users\\Admin\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\windows_x86_64_msvc-0.52.6\\lib\\windows.0.52.0.lib" "C:\\Users\\Admin\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\windows_x86_64_msvc-0.53.1\\lib\\windows.0.53.0.lib" "advapi32.lib" "kernel32.lib" "kernel32.lib" "kernel32.lib" "ntdll.lib" "userenv.lib" "ws2_32.lib" "dbghelp.lib" "/defaultlib:msvcrt" "/NXCOMPAT" "/LIBPATH:C:\\Users\\Admin\\Documents\\protakeoff-v2\\target\\debug\\build\\protakeoff-tauri-7546e8931401a86d\\out" "/LIBPATH:C:\\Users\\Admin\\Documents\\protakeoff-v2\\target\\debug\\build\\webview2-com-sys-06f5a12dd9c121c7\\out\\x64" "/LIBPATH:C:\\Users\\Admin\\Documents\\protakeoff-v2\\mupdf\\platform\\win32\\x64\\Release" "/LIBPATH:C:\\Program Files\\Microsoft Visual Studio\\18\\Community\\VC\\Tools\\MSVC\\14.50.35717\\atlmfc\\lib\\x64" "/LIBPATH:C:\\Users\\Admin\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\windows_x86_64_msvc-0.53.1\\lib" "/LIBPATH:C:\\Users\\Admin\\.cargo\\registry\\src\\index.crates.io-1949cf8c6b5b557f\\windows_x86_64_msvc-0.52.6\\lib" "/OUT:C:\\Users\\Admin\\Documents\\protakeoff-v2\\target\\debug\\deps\\protakeoff_tauri.exe" "/OPT:REF,NOICF" "/DEBUG" "/PDBALTPATH:%_PDB%" "/NATVIS:<sysroot>\\lib\\rustlib\\etc\\intrinsic.natvis" "/NATVIS:<sysroot>\\lib\\rustlib\\etc\\liballoc.natvis" "/NATVIS:<sysroot>\\lib\\rustlib\\etc\\libcore.natvis" "/NATVIS:<sysroot>\\lib\\rustlib\\etc\\libstd.natvis" "/NATVIS:C:\\Users\\Admin\\AppData\\Local\\Temp\\rustcEdSTSI\\protakeoff_tauri-0.natvis" "/NATVIS:C:\\Users\\Admin\\AppData\\Local\\Temp\\rustcEdSTSI\\protakeoff_tauri-1.natvis" "/NATVIS:C:\\Users\\Admin\\AppData\\Local\\Temp\\rustcEdSTSI\\protakeoff_tauri-2.natvis" "C:\\Users\\Admin\\Documents\\protakeoff-v2\\target\\debug\\build\\protakeoff-tauri-7546e8931401a86d\\out\\resource.lib"
+  = note: some arguments are omitted. use `--verbose` to show all linker arguments
+  = note: libmupdf.lib(geometry.obj) : MSIL .netmodule or module compiled with /GL found; restarting link with /LTCG; add /LTCG to the link command line to improve linker performanceΓÉì
+          mupdf_bridge.lib(ea708c7824d36062-mupdf_bridge.o) : error LNK2001: unresolved external symbol fz_rect_toΓÉì
+          mupdf_bridge.lib(ea708c7824d36062-mupdf_bridge.o) : error LNK2001: unresolved external symbol pdf_load_system_fontΓÉì
+          C:\Users\Admin\Documents\protakeoff-v2\target\debug\deps\protakeoff_tauri.exe : fatal error LNK1120: 2 unresolved externalsΓÉì
+          
+
+warning: `protakeoff-tauri` (bin "protakeoff-tauri") generated 20 warnings
+error: could not compile `protakeoff-tauri` (bin "protakeoff-tauri") due to 1 previous error; 20 warnings emitted

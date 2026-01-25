@@ -1,0 +1,42 @@
+{
+    "$schema": "https://schema.tauri.app/config/2",
+    "productName": "ProTakeoff",
+    "version": "0.1.0",
+    "identifier": "com.protakeoff.protakeoff",
+    "build": {
+        "beforeDevCommand": "npm run dev",
+        "beforeBuildCommand": "npm run build",
+        "devUrl": "http://127.0.0.1:1420",
+        "frontendDist": "../dist"
+    },
+    "app": {
+        "windows": [
+            {
+                "label": "main",
+                "title": "ProTakeoff V2",
+                "width": 1280,
+                "height": 800,
+                "incognito": true
+            }
+        ],
+        "security": {
+            "csp": "default-src 'self' http://localhost:* http://127.0.0.1:* http://protakeoff.localhost protakeoff:; connect-src 'self' http://localhost:* http://127.0.0.1:* https://clerk.protakeoff.org https://*.clerk.accounts.dev https://precise-hyena-598.convex.cloud wss://precise-hyena-598.convex.cloud http://ipc.localhost ipc: ipc://localhost http://protakeoff.localhost protakeoff: blob: data:; img-src 'self' http://protakeoff.localhost protakeoff: asset: https://asset.localhost https://clerk.protakeoff.org https://img.clerk.com blob: data:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://clerk.protakeoff.org https://*.clerk.accounts.dev blob:; worker-src 'self' blob:; style-src 'self' 'unsafe-inline';"
+        }
+    },
+    "plugins": {
+        "shell": {},
+        "fs": {}
+    },
+    "bundle": {
+        "active": true,
+        "targets": "all",
+        "icon": [
+            "icons/icon.png",
+            "icons/icon.ico"
+        ],
+        "resources": [
+            "tessdata/*",
+            "resources/libpdfium.dylib"
+        ]
+    }
+}

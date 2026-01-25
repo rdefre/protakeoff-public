@@ -1,0 +1,68 @@
+    Checking protakeoff-tauri v0.1.0 (C:\Users\Admin\Documents\protakeoff-v2\frontend\src-tauri)
+warning: unused imports: `Affine`, `PathEl`, `Shape`, and `Vec2`
+  --> frontend\src-tauri\src\geometry.rs:10:17
+   |
+10 | pub use kurbo::{Affine, BezPath, PathEl, Point, Rect, Shape, Vec2};
+   |                 ^^^^^^           ^^^^^^               ^^^^^  ^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: unused import: `RenderMode`
+  --> frontend\src-tauri\src\vello_renderer.rs:15:40
+   |
+15 | use vello_cpu::{Pixmap, RenderContext, RenderMode};
+   |                                        ^^^^^^^^^^
+
+warning: unused imports: `Affine`, `BezPath`, and `Point`
+  --> frontend\src-tauri\src\vello_renderer.rs:17:28
+   |
+17 | pub use vello_cpu::kurbo::{Affine, BezPath, Point, Rect};
+   |                            ^^^^^^  ^^^^^^^  ^^^^^
+
+error[E0308]: arguments to this function are incorrect
+   --> frontend\src-tauri\src\vello_renderer.rs:32:19
+    |
+ 32 |     let mut ctx = RenderContext::new(width, height);
+    |                   ^^^^^^^^^^^^^^^^^^ -----  ------ expected `u16`, found `u32`
+    |                                      |
+    |                                      expected `u16`, found `u32`
+    |
+note: associated function defined here
+   --> C:\Users\Admin\.cargo\git\checkouts\vello-348d5f1672e79ca5\b18b4df\sparse_strips\vello_cpu\src\render.rs:118:12
+    |
+118 |     pub fn new(width: u16, height: u16) -> Self {
+    |            ^^^
+help: you can convert a `u32` to a `u16` and panic if the converted value doesn't fit
+    |
+ 32 |     let mut ctx = RenderContext::new(width.try_into().unwrap(), height);
+    |                                           ++++++++++++++++++++
+help: you can convert a `u32` to a `u16` and panic if the converted value doesn't fit
+    |
+ 32 |     let mut ctx = RenderContext::new(width, height.try_into().unwrap());
+    |                                                   ++++++++++++++++++++
+
+error[E0308]: arguments to this function are incorrect
+  --> frontend\src-tauri\src\vello_renderer.rs:41:22
+   |
+41 |     let mut pixmap = Pixmap::new(width, height);
+   |                      ^^^^^^^^^^^ -----  ------ expected `u16`, found `u32`
+   |                                  |
+   |                                  expected `u16`, found `u32`
+   |
+note: associated function defined here
+  --> C:\Users\Admin\.cargo\git\checkouts\vello-348d5f1672e79ca5\b18b4df\sparse_strips\vello_common\src\pixmap.rs:35:12
+   |
+35 |     pub fn new(width: u16, height: u16) -> Self {
+   |            ^^^
+help: you can convert a `u32` to a `u16` and panic if the converted value doesn't fit
+   |
+41 |     let mut pixmap = Pixmap::new(width.try_into().unwrap(), height);
+   |                                       ++++++++++++++++++++
+help: you can convert a `u32` to a `u16` and panic if the converted value doesn't fit
+   |
+41 |     let mut pixmap = Pixmap::new(width, height.try_into().unwrap());
+   |                                               ++++++++++++++++++++
+
+For more information about this error, try `rustc --explain E0308`.
+warning: `protakeoff-tauri` (bin "protakeoff-tauri") generated 3 warnings
+error: could not compile `protakeoff-tauri` (bin "protakeoff-tauri") due to 2 previous errors; 3 warnings emitted

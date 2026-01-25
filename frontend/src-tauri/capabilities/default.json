@@ -1,0 +1,48 @@
+{
+  "$schema": "https://schema.tauri.app/capability/1",
+  "identifier": "default",
+  "description": "Capability for the main window",
+  "windows": [
+    "main"
+  ],
+  "remote": {
+    "urls": [
+      "http://localhost:5174"
+    ]
+  },
+  "permissions": [
+    "core:default",
+    "shell:allow-open",
+    "fs:default",
+    "fs:allow-read",
+    "fs:allow-write",
+    "fs:allow-write-text-file",
+    "fs:allow-exists",
+    "dialog:default",
+    "dialog:allow-save",
+    "dialog:allow-open",
+    "os:default",
+    "http:default",
+    {
+      "identifier": "http:allow-fetch",
+      "allow": [
+        "https://clerk.protakeoff.org/**",
+        "https://api.clerk.com/**",
+        "https://precise-hyena-598.convex.cloud/**"
+      ]
+    },
+    "http:allow-fetch-cancel",
+    "http:allow-fetch-read-body",
+    "http:allow-fetch-send",
+    {
+      "identifier": "fs:scope",
+      "allow": [
+        "$APPDATA/**",
+        "$DOCUMENT/**",
+        "$DOWNLOAD/**",
+        "$TEMP/**"
+      ]
+    },
+    "deep-link:default"
+  ]
+}

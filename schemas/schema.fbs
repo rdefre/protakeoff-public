@@ -1,0 +1,51 @@
+// schema.fbs
+namespace ProTakeoff;
+
+struct Point {
+  x: float;
+  y: float;
+}
+
+struct Color {
+  r: ubyte;
+  g: ubyte;
+  b: ubyte;
+  a: ubyte;
+}
+
+table Polyline {
+  points: [Point];
+  color: Color;
+  thickness: float;
+}
+
+table Polygon {
+  points: [Point]; // Exterior ring. Holes could be nested if needed, simplified here.
+  fill_color: Color;
+  stroke_color: Color;
+  stroke_thickness: float;
+}
+
+table Annotation {
+  position: Point;
+  text: string;
+  font_size: float;
+  color: Color;
+}
+
+union Geometry {
+  Polyline,
+  Polygon,
+  Annotation,
+}
+
+table LayerEntity {
+  id: ulong;
+  geometry: Geometry;
+}
+
+table ViewportResponse {
+  entities: [LayerEntity];
+}
+
+root_type ViewportResponse;
