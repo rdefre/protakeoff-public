@@ -119,8 +119,9 @@ ProTakeoff AI is built on a modern, high-performance stack:
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/ilirkl/protakeoff-ai3.git
-   cd protakeoff-ai3
+   git clone https://github.com/ilirkl/protakeoff-public.git
+   cd protakeoff-public
+  
    ```
 
 2. **Install frontend dependencies**
@@ -130,7 +131,9 @@ ProTakeoff AI is built on a modern, high-performance stack:
 
 3. **Run the development server**
    ```bash
+   cd frontend
    npm run tauri dev
+   *note, you need to set up convex database environment
    ```
 
 ## 🤝 Contributing
