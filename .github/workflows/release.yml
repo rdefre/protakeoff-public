@@ -12,7 +12,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        platform: [macos-latest, macos-14, windows-latest]
+        # Build for multiple platforms:
+        # - macos-latest: ARM (Apple Silicon)
+        # - macos-14: ARM (Apple Silicon)
+        # - macos-13: Intel x64
+        # - windows-latest: Windows
+        platform: [macos-latest, macos-14, macos-13, windows-latest]
 
     runs-on: ${{ matrix.platform }}
     steps:
