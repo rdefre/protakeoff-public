@@ -9,7 +9,7 @@ on:
 
 jobs:
   build-mac-intel:
-    runs-on: macos-13 # Intel x64 architecture
+    runs-on: macos-12 # Intel x64 architecture
     permissions:
       contents: read
 
