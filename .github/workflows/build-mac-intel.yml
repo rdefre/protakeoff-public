@@ -10,6 +10,8 @@ on:
 jobs:
   build-mac-intel:
     runs-on: macos-13 # Intel x64 architecture
+    permissions:
+      contents: read
 
     steps:
       - name: Checkout repository
